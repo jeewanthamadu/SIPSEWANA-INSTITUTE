@@ -1,0 +1,10 @@
+/*
+.zoom:hover {
+    -fx-focus-traversable: 2;
+}*/
+.zoom:hover {
+    -fx-font-size: 20;
+}
+.zoom2:hover {
+    -fx-font-size: 10;
+}

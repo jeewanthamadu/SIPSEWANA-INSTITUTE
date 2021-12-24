@@ -1,3 +1,4 @@
+/*
 package util;
 
 import org.hibernate.Session;
@@ -35,3 +36,4 @@ public class FactoryConfiguration {
         return sessionFactory.openSession();
     }
 }
+*/

@@ -3,26 +3,34 @@ package entity;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+
 @Entity
-public class Student {
+public class Student implements SuperEntity {
     @Id
-    String regNumber;
-    String name;
-    String age;
-    String contactNumber;
-    String address;
-    String email;
+    private String regNumber;
+    private String name;
+    private int age;
+    private String contactNumber;
+    private String address;
+    private String dob;
+    private String email;
+    private String nic;
+    private String gender;
+
 
     public Student() {
     }
 
-    public Student(String regNumber, String name, String age, String contactNumber, String address, String email) {
+    public Student(String regNumber, String name, int age, String contactNumber, String address, String dob, String email, String nic, String gender) {
         this.regNumber = regNumber;
         this.name = name;
         this.age = age;
         this.contactNumber = contactNumber;
         this.address = address;
+        this.dob = dob;
         this.email = email;
+        this.nic = nic;
+        this.gender = gender;
     }
 
     public String getRegNumber() {
@@ -41,11 +49,11 @@ public class Student {
         this.name = name;
     }
 
-    public String getAge() {
+    public int getAge() {
         return age;
     }
 
-    public void setAge(String age) {
+    public void setAge(int age) {
         this.age = age;
     }
 
@@ -65,6 +73,14 @@ public class Student {
         this.address = address;
     }
 
+    public String getDob() {
+        return dob;
+    }
+
+    public void setDob(String dob) {
+        this.dob = dob;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -73,16 +89,34 @@ public class Student {
         this.email = email;
     }
 
+    public String getNic() {
+        return nic;
+    }
+
+    public void setNic(String nic) {
+        this.nic = nic;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
     @Override
     public String toString() {
         return "Student{" +
                 "regNumber='" + regNumber + '\'' +
                 ", name='" + name + '\'' +
-                ", age='" + age + '\'' +
+                ", age=" + age +
                 ", contactNumber='" + contactNumber + '\'' +
                 ", address='" + address + '\'' +
+                ", dob='" + dob + '\'' +
                 ", email='" + email + '\'' +
+                ", nic='" + nic + '\'' +
+                ", gender='" + gender + '\'' +
                 '}';
     }
-
 }

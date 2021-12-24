@@ -1,14 +1,6 @@
-package entity;
+package dto;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import java.util.List;
-
-
-@Entity
-public class Student implements SuperEntity {
-    @Id
+public class StudentDTO {
     private String regNumber;
     private String name;
     private int age;
@@ -18,23 +10,22 @@ public class Student implements SuperEntity {
     private String email;
     private String nic;
     private String gender;
-    @OneToMany(mappedBy = "registerNumber")
-    private List<RegistrationDetails> registrationDetails;
 
-    public Student() {
-    }
-
-    public Student(String regNumber, String name, int age, String contactNumber, String address, String dob, String email, String nic, String gender) {
-        this.regNumber = regNumber;
-        this.name = name;
-        this.age = age;
-        this.contactNumber = contactNumber;
+    public StudentDTO(String regNumber, String name, int age, String contactNumber, String address, String dob, String email, String nic, String gender) {
+        this.setRegNumber(regNumber);
+        this.setName(name);
+        this.setAge(age);
+        this.setContactNumber(contactNumber);
         this.address = address;
-        this.dob = dob;
-        this.email = email;
-        this.nic = nic;
-        this.gender = gender;
+        this.setDob(dob);
+        this.setEmail(email);
+        this.setNic(nic);
+        this.setGender(gender);
     }
+
+    public StudentDTO() {
+    }
+
 
     public String getRegNumber() {
         return regNumber;
@@ -110,7 +101,7 @@ public class Student implements SuperEntity {
 
     @Override
     public String toString() {
-        return "Student{" +
+        return "StudentDTO{" +
                 "regNumber='" + regNumber + '\'' +
                 ", name='" + name + '\'' +
                 ", age=" + age +

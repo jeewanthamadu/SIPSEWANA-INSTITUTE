@@ -23,12 +23,6 @@
             <Font name="Cooper Black" size="63.0" />
          </font>
       </Label>
-      <TableView layoutX="42.0" layoutY="280.0" prefHeight="102.0" prefWidth="1142.0">
-         <columns>
-            <TableColumn prefWidth="75.0" text="C1" />
-            <TableColumn prefWidth="75.0" text="C2" />
-         </columns>
-      </TableView>
       <Label layoutX="207.0" layoutY="53.0" prefHeight="140.0" prefWidth="812.0" text="REGISTRATION DETAILS" textAlignment="CENTER">
          <font>
             <Font name="Cooper Black" size="39.0" />
@@ -66,10 +60,12 @@
             <Font name="Calisto MT Bold" size="24.0" />
          </font>
       </Label>
-      <TableView layoutX="38.0" layoutY="453.0" prefHeight="210.0" prefWidth="1142.0">
+      <TableView layoutX="38.0" layoutY="453.0" prefHeight="210.0" prefWidth="1142.0" stylesheets="@../style.css">
          <columns>
-            <TableColumn prefWidth="75.0" text="C1" />
-            <TableColumn prefWidth="75.0" text="C2" />
+            <TableColumn prefWidth="297.0" text="Programme ID" />
+            <TableColumn prefWidth="293.0" text="Programme Name" />
+            <TableColumn prefWidth="280.0" text="Duration" />
+            <TableColumn prefWidth="270.0" text="Fee(LKR)" />
          </columns>
       </TableView>
       <Label layoutX="525.0" layoutY="419.0" prefHeight="28.0" prefWidth="211.0" text="COURSE DETAILS">
@@ -87,5 +83,18 @@
             <Font name="Cooper Black" size="21.0" />
          </font>
       </Label>
+      <TableView layoutX="38.0" layoutY="280.0" prefHeight="90.0" prefWidth="1142.0" stylesheets="@../style.css">
+         <columns>
+            <TableColumn prefWidth="82.0" text="Reg.No" />
+            <TableColumn prefWidth="172.0" text="Name" />
+            <TableColumn prefWidth="64.0" text="Age" />
+            <TableColumn prefWidth="136.0" text="NIC" />
+            <TableColumn prefWidth="158.0" text="Contact Number" />
+            <TableColumn prefWidth="165.0" text="Address" />
+            <TableColumn prefWidth="121.0" text="DOB" />
+            <TableColumn prefWidth="137.0" text="E-Mail" />
+            <TableColumn prefWidth="105.0" text="Gender" />
+         </columns>
+      </TableView>
    </children>
 </AnchorPane>

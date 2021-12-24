@@ -16,7 +16,7 @@
 
 .table-view .column-header {
     -fx-size: 38px;
-    -fx-background-color:/*#0652DD*/ black;
+    -fx-background-color:#0652DD /*black*/;
     -fx-font-size: 18;
 }
 
@@ -51,11 +51,9 @@
     -fx-padding: 10 0 10px 0;
 }
 
-
 .table-view .column-header {
     -fx-background-color: transparent;
 }
-
 
 .column-header {
     -fx-sort-icon-display: LEFT;

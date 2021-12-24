@@ -38,10 +38,17 @@
             <Font name="Calisto MT Bold" size="24.0" />
          </font>
       </Label>
-      <TableView layoutX="59.0" layoutY="509.0" prefHeight="150.0" prefWidth="1120.0">
+      <TableView layoutX="59.0" layoutY="509.0" prefHeight="150.0" prefWidth="1120.0" stylesheets="@../style.css">
         <columns>
-          <TableColumn prefWidth="75.0" text="C1" />
-          <TableColumn prefWidth="75.0" text="C2" />
+          <TableColumn prefWidth="82.0" text="Reg.No" />
+          <TableColumn prefWidth="172.0" text="Name" />
+            <TableColumn prefWidth="64.0" text="Age" />
+            <TableColumn prefWidth="127.0" text="NIC" />
+            <TableColumn prefWidth="149.0" text="Contact Number" />
+            <TableColumn prefWidth="155.0" text="Address" />
+            <TableColumn prefWidth="128.0" text="DOB" />
+            <TableColumn prefWidth="142.0" text="E-Mail" />
+            <TableColumn prefWidth="100.0" text="Gender" />
         </columns>
       </TableView>
       <Label layoutX="169.0" layoutY="33.0" prefHeight="140.0" prefWidth="812.0" text="STUDENT REGISTRATION" textAlignment="CENTER">
@@ -49,12 +56,12 @@
             <Font name="Cooper Black" size="39.0" />
          </font>
       </Label>
-      <JFXTextField focusColor="#001f9a" labelFloat="true" layoutX="66.0" layoutY="148.0" prefHeight="25.0" prefWidth="212.0" promptText="Reg.No" />
-      <JFXTextField focusColor="#001f9a" labelFloat="true" layoutX="341.0" layoutY="148.0" prefHeight="25.0" prefWidth="348.0" promptText="Name" />
+      <JFXTextField focusColor="#001f9a" labelFloat="true" layoutX="66.0" layoutY="148.0" prefHeight="25.0" prefWidth="148.0" promptText="Reg.No" />
+      <JFXTextField focusColor="#001f9a" labelFloat="true" layoutX="271.0" layoutY="148.0" prefHeight="25.0" prefWidth="329.0" promptText="Name" />
       <JFXTextField focusColor="#001f9a" labelFloat="true" layoutX="421.0" layoutY="198.0" prefHeight="25.0" prefWidth="212.0" promptText="DOB" />
       <JFXTextField focusColor="#001f9a" labelFloat="true" layoutX="976.0" layoutY="148.0" prefHeight="25.0" prefWidth="198.0" promptText="Contact Number" />
       <JFXTextField focusColor="#001f9a" labelFloat="true" layoutX="66.0" layoutY="198.0" prefHeight="25.0" prefWidth="290.0" promptText="Address" />
-      <JFXTextField focusColor="#001f9a" labelFloat="true" layoutX="786.0" layoutY="148.0" prefHeight="25.0" prefWidth="98.0" promptText="Age" />
+      <JFXTextField focusColor="#001f9a" labelFloat="true" layoutX="646.0" layoutY="148.0" prefHeight="25.0" prefWidth="61.0" promptText="Age" />
       <JFXTextField focusColor="#001f9a" labelFloat="true" layoutX="689.0" layoutY="198.0" prefHeight="25.0" prefWidth="212.0" promptText="E-Mail" />
       <CheckBox layoutX="980.0" layoutY="195.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="83.0" text="Male">
          <font>
@@ -117,5 +124,6 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Button>
+      <JFXTextField focusColor="#001f9a" labelFloat="true" layoutX="748.0" layoutY="148.0" prefHeight="25.0" prefWidth="198.0" promptText="NIC" />
    </children>
 </AnchorPane>

@@ -56,12 +56,12 @@
             <Font name="Cooper Black" size="39.0" />
          </font>
       </Label>
-      <JFXTextField focusColor="#001f9a" labelFloat="true" layoutX="66.0" layoutY="148.0" prefHeight="25.0" prefWidth="148.0" promptText="Reg.No" />
-      <JFXTextField focusColor="#001f9a" labelFloat="true" layoutX="271.0" layoutY="148.0" prefHeight="25.0" prefWidth="329.0" promptText="Name" />
-      <JFXTextField focusColor="#001f9a" labelFloat="true" layoutX="421.0" layoutY="198.0" prefHeight="25.0" prefWidth="212.0" promptText="DOB" />
-      <JFXTextField focusColor="#001f9a" labelFloat="true" layoutX="976.0" layoutY="148.0" prefHeight="25.0" prefWidth="198.0" promptText="Contact Number" />
-      <JFXTextField focusColor="#001f9a" labelFloat="true" layoutX="66.0" layoutY="198.0" prefHeight="25.0" prefWidth="290.0" promptText="Address" />
-      <JFXTextField focusColor="#001f9a" labelFloat="true" layoutX="646.0" layoutY="148.0" prefHeight="25.0" prefWidth="61.0" promptText="Age" />
+      <JFXTextField fx:id="txtregNo" focusColor="#001f9a" labelFloat="true" layoutX="66.0" layoutY="148.0" prefHeight="25.0" prefWidth="148.0" promptText="Reg.No" />
+      <JFXTextField fx:id="txtName" focusColor="#001f9a" labelFloat="true" layoutX="271.0" layoutY="148.0" prefHeight="25.0" prefWidth="329.0" promptText="Name" />
+      <JFXTextField fx:id="txtDob" focusColor="#001f9a" labelFloat="true" layoutX="421.0" layoutY="198.0" prefHeight="25.0" prefWidth="212.0" promptText="DOB" />
+      <JFXTextField fx:id="txtContactNumber" focusColor="#001f9a" labelFloat="true" layoutX="976.0" layoutY="148.0" prefHeight="25.0" prefWidth="198.0" promptText="Contact Number" />
+      <JFXTextField fx:id="txtAddress" focusColor="#001f9a" labelFloat="true" layoutX="66.0" layoutY="198.0" prefHeight="25.0" prefWidth="290.0" promptText="Address" />
+      <JFXTextField fx:id="txtAge" focusColor="#001f9a" labelFloat="true" layoutX="646.0" layoutY="148.0" prefHeight="25.0" prefWidth="61.0" promptText="Age" />
       <JFXTextField focusColor="#001f9a" labelFloat="true" layoutX="689.0" layoutY="198.0" prefHeight="25.0" prefWidth="212.0" promptText="E-Mail" />
       <CheckBox layoutX="980.0" layoutY="195.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="83.0" text="Male">
          <font>
@@ -109,21 +109,21 @@
       <JFXTextField labelFloat="true" layoutX="708.0" layoutY="363.0" prefHeight="25.0" prefWidth="176.0" promptText="Fee(LKR)" />
       <JFXTextField labelFloat="true" layoutX="515.0" layoutY="364.0" prefHeight="25.0" prefWidth="148.0" promptText="Duration" />
       <Separator layoutX="37.0" layoutY="439.0" prefHeight="3.0" prefWidth="1158.0" />
-      <Button layoutX="968.0" layoutY="367.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="165.0" style="-fx-background-color: #d63031; -fx-background-radius: 20;" text="REMOVE" textFill="WHITE">
+      <Button layoutX="968.0" layoutY="367.0" mnemonicParsing="false" onAction="#btnRemoveOnAction" prefHeight="30.0" prefWidth="165.0" style="-fx-background-color: #d63031; -fx-background-radius: 20;" text="REMOVE" textFill="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Button>
-      <Button layoutX="966.0" layoutY="278.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="165.0" style="-fx-background-color: #0984e3; -fx-background-radius: 20;" text="ADD" textFill="WHITE">
+      <Button layoutX="966.0" layoutY="278.0" mnemonicParsing="false" onAction="#btnAddOnAction" prefHeight="25.0" prefWidth="165.0" style="-fx-background-color: #0984e3; -fx-background-radius: 20;" text="ADD" textFill="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Button>
-      <Button layoutX="968.0" layoutY="322.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="165.0" style="-fx-background-color: #C4E538; -fx-background-radius: 20;" text="UPDATE" textFill="WHITE">
+      <Button layoutX="968.0" layoutY="322.0" mnemonicParsing="false" onAction="#btnUpdateOnAction" prefHeight="30.0" prefWidth="165.0" style="-fx-background-color: #C4E538; -fx-background-radius: 20;" text="UPDATE" textFill="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Button>
-      <JFXTextField focusColor="#001f9a" labelFloat="true" layoutX="748.0" layoutY="148.0" prefHeight="25.0" prefWidth="198.0" promptText="NIC" />
+      <JFXTextField fx:id="txtNic" focusColor="#001f9a" labelFloat="true" layoutX="748.0" layoutY="148.0" prefHeight="25.0" prefWidth="198.0" promptText="NIC" />
    </children>
 </AnchorPane>

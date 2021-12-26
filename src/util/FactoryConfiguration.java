@@ -18,17 +18,16 @@ public class FactoryConfiguration {
     private FactoryConfiguration() {
         Properties properties = new Properties();
         try {
-            properties.load(new FileInputStream("hibernate.properties"));
+            properties.load(new FileInputStream("src/hibernate.properties"));
         } catch (IOException e) {
             e.printStackTrace();
         }
 
         org.hibernate.cfg.Configuration configuration = new Configuration()
                 .addAnnotatedClass(Student.class)
-                .addAnnotatedClass(Programme.class)
-                .addAnnotatedClass(RegistrationDetails.class);
+                .addAnnotatedClass(Programme.class);
         configuration.setProperties(properties);
-        SessionFactory sessionFactory = configuration.buildSessionFactory();
+        sessionFactory = configuration.buildSessionFactory();
     }
 
     public static FactoryConfiguration getInstance() {

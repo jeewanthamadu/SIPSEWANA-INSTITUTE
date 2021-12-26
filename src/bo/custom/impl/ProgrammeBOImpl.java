@@ -2,17 +2,19 @@ package bo.custom.impl;
 
 import bo.custom.ProgrammeBO;
 import dao.DAOFactory;
+import dao.custom.impl.ProgrammeDAOImpl;
 import dto.ProgrammeDTO;
 import dto.StudentDTO;
+import entity.Programme;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ProgrammeBOImpl implements ProgrammeBO {
-    ProgrammeBOImpl programmeBO = (ProgrammeBOImpl) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.PROGRAMME);
+    ProgrammeDAOImpl programmeDAO = (ProgrammeDAOImpl) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.PROGRAMME);
     @Override
     public boolean add(ProgrammeDTO programmeDTO) {
-        return programmeBO.add(new ProgrammeDTO(
+        return programmeDAO.add(new Programme(
                 programmeDTO.getProgrammeID(),
                 programmeDTO.getProgrammeName(),
                 programmeDTO.getDuration(),
@@ -22,11 +24,12 @@ public class ProgrammeBOImpl implements ProgrammeBO {
 
     @Override
     public List<ProgrammeDTO> find() {
-        List<ProgrammeDTO>list = programmeBO.find();
+        List<Programme>list = programmeDAO.find();
         ArrayList<ProgrammeDTO> dtoArrayList=new ArrayList<>();
 
         ProgrammeDTO programmeDTO=null;
-        for (ProgrammeDTO programme:list
+
+        for (Programme programme:list
              ) {dtoArrayList.add(new ProgrammeDTO(
                 programme.getProgrammeID(),
                 programme.getProgrammeName(),
@@ -39,7 +42,7 @@ public class ProgrammeBOImpl implements ProgrammeBO {
 
     @Override
     public boolean update(ProgrammeDTO programmeDTO) {
-        return programmeBO.update(new ProgrammeDTO(
+        return programmeDAO.update(new Programme(
                 programmeDTO.getProgrammeID(),
                 programmeDTO.getProgrammeName(),
                 programmeDTO.getDuration(),
@@ -49,6 +52,6 @@ public class ProgrammeBOImpl implements ProgrammeBO {
 
     @Override
     public boolean delete(String id) {
-        return programmeBO.delete(id);
+        return programmeDAO.delete(id);
     }
 }

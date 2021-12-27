@@ -43,6 +43,8 @@ public class ManageCourseFormController {
     public TableColumn colProgrammeName;
     public TableColumn colDuration;
     public TableColumn colFee;
+    public JFXTextField txtSearch;
+    public JFXTextField txtSearch1;
 
     ProgrammeBOImpl programmeBO = (ProgrammeBOImpl) BOFactory.getBoFactory().getBO(BOFactory.BoTypes.PROGRAMME);
 
@@ -79,6 +81,8 @@ public class ManageCourseFormController {
     }
 
     public void txtSearch(KeyEvent keyEvent) {
+        ObservableList<ProgrammeTM> search = programmeBO.search(txtSearch1.getText());
+        tblProgramme.setItems(search);
     }
 
     public void btnRemoveOnAction(ActionEvent actionEvent) {

@@ -40,7 +40,7 @@ public class RegistrationDeatilsFormController {
     public TableColumn colAddress;
     public TableColumn colDob;
     public TableColumn colEmail;
-    public     colGender;
+    public TableColumn colGender;
 
     public void initialize(){
         loadDateAndTime();

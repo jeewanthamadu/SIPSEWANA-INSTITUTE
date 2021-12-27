@@ -31,7 +31,7 @@
          </font>
       </Label>
       <Separator layoutX="34.0" layoutY="333.0" prefHeight="0.0" prefWidth="1170.0" />
-      <JFXTextField labelFloat="true" layoutX="47.0" layoutY="352.0" onKeyReleased="#txtSearch" prefHeight="25.0" prefWidth="290.0" promptText="Search" unFocusColor="BLACK">
+      <JFXTextField fx:id="txtSearch1" labelFloat="true" layoutX="47.0" layoutY="352.0" onKeyReleased="#txtSearch" prefHeight="25.0" prefWidth="290.0" promptText="Search" unFocusColor="BLACK">
          <font>
             <Font size="16.0" />
          </font>
@@ -106,7 +106,7 @@
             <TableColumn fx:id="colFee" prefWidth="273.0" text="Fee(LKR)" />
          </columns>
       </TableView>
-      <Button layoutX="1014.0" layoutY="277.0" mnemonicParsing="false" onAction="#btnClear" prefHeight="37.0" prefWidth="134.0" style="-fx-background-color: #c0392b; -fx-background-radius: 20;" text="CLEAR" textFill="WHITE">
+      <Button layoutX="1014.0" layoutY="277.0" mnemonicParsing="false" onAction="#btnClear" prefHeight="37.0" prefWidth="134.0" style="-fx-background-color: #d68031; -fx-background-radius: 20;" text="CLEAR" textFill="WHITE">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>

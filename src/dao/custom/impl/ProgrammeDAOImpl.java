@@ -1,18 +1,19 @@
 package dao.custom.impl;
 
+import dao.DAOFactory;
 import dao.custom.ProgrammeDAO;
 import entity.Programme;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import util.FactoryConfiguration;
-import view.tm.ProgrammeTM;
 
 import java.util.List;
 
+
 public class ProgrammeDAOImpl implements ProgrammeDAO {
+
+
     @Override
     public Boolean add(Programme entity) {
         Session session = FactoryConfiguration.getInstance().getSession();
@@ -69,4 +70,19 @@ public class ProgrammeDAOImpl implements ProgrammeDAO {
         return list;
 
     }
+
+    @Override
+    public List<String> getAllProgramIds() {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+
+        Query query = session.createQuery("SELECT p.programmeID FROM Programme p");
+        List<String> list = query.list();
+
+        transaction.commit();
+        session.close();
+        return list;
+    }
+
+
 }

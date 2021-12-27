@@ -29,6 +29,7 @@ import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.time.LocalTime;
 import java.util.Date;
+import java.util.List;
 
 public class ManageCourseFormController {
     public AnchorPane cmContext;
@@ -145,7 +146,6 @@ public class ManageCourseFormController {
         colDuration.setCellValueFactory(new PropertyValueFactory<>("duration"));
         colFee.setCellValueFactory(new PropertyValueFactory<>("fee"));
         tblProgramme.setItems(list);
-
     }
 
     public void tblOnMouseClicked(MouseEvent mouseEvent) {
@@ -159,4 +159,5 @@ public class ManageCourseFormController {
 
         }
     }
+
 }

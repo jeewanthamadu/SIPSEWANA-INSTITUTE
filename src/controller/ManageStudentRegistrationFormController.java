@@ -1,11 +1,17 @@
 package controller;
 
+import bo.BOFactory;
+import bo.custom.impl.StudentBOImpl;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
+import dao.DAOFactory;
+import dao.custom.impl.ProgrammeDAOImpl;
+import dto.StudentDTO;
 import entity.Programme;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -22,6 +28,7 @@ import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.time.LocalTime;
 import java.util.Date;
+import java.util.List;
 
 public class ManageStudentRegistrationFormController {
     public AnchorPane srContext;
@@ -61,9 +68,12 @@ public class ManageStudentRegistrationFormController {
     public RadioButton rdFemale;
     public ToggleGroup gender;
 
+    StudentBOImpl studentBO = (StudentBOImpl) BOFactory.getBoFactory().getBO(BOFactory.BoTypes.STUDENT);
+    private final ProgrammeDAOImpl programmeDAO = (ProgrammeDAOImpl) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.PROGRAMME);
 
     public void initialize(){
         loadDateAndTime();
+        loadProgramId();
     }
 
     private void loadDateAndTime() {
@@ -98,8 +108,40 @@ public class ManageStudentRegistrationFormController {
     public void btnRemoveOnAction(ActionEvent actionEvent) {
     }
 
+    public String selectedGender(){
+        if (rdMale.isSelected()){
+            return "Male";
+        }else if(rdFemale.isSelected()){
+            return  "Female";
+        }else {
+            return null;
+        }
+    }
+
     public void btnAddOnAction(ActionEvent actionEvent) {
 
+        StudentDTO studentDTO = new StudentDTO(
+                txtRegNo.getText(),
+                txtName.getText(),
+                Integer.parseInt(txtAge.getText()),
+                txtContactNumber.getText(),
+                txtAddress.getText(),
+                txtDob.getText(),
+                txtEmail.getText(),
+                txtNic.getText(),
+                selectedGender()
+        );
+
+        if(studentBO.add(studentDTO)){
+           showProgrammesOnTable();
+            new Alert(Alert.AlertType.CONFIRMATION,"Student Add Successfully").show();
+        }else {
+            new Alert(Alert.AlertType.WARNING,"Something Went Wrong").show();
+        }
+
+    }
+
+    private void showProgrammesOnTable() {
     }
 
     public void btnUpdateOnAction(ActionEvent actionEvent) {
@@ -109,5 +151,12 @@ public class ManageStudentRegistrationFormController {
     }
 
     public void tblOnClicked(MouseEvent mouseEvent) {
+    }
+
+    private void loadProgramId(){
+        List<String> allProgramIds = programmeDAO.getAllProgramIds();
+        cmbProgrammeID01.getItems().addAll(allProgramIds);
+        cmbProgrammeID02.getItems().addAll(allProgramIds);
+        cmbProgrammeID03.getItems().addAll(allProgramIds);
     }
 }

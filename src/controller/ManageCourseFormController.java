@@ -1,5 +1,6 @@
 package controller;
 
+import com.jfoenix.controls.JFXTextField;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -8,6 +9,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -21,6 +25,15 @@ public class ManageCourseFormController {
     public AnchorPane cmContext;
     public Label lblDate;
     public Label lblTime;
+    public JFXTextField txtProgrammeID;
+    public JFXTextField txtProgramme;
+    public JFXTextField txtDuration;
+    public JFXTextField txtFee;
+    public TableView tblProgramme;
+    public TableColumn colProgrammeID;
+    public TableColumn colProgrammeName;
+    public TableColumn colDuration;
+    public TableColumn colFee;
 
     public void initialize(){
         loadDateAndTime();
@@ -51,5 +64,20 @@ public class ManageCourseFormController {
         window.centerOnScreen();
         window.setResizable(false);
         System.out.println("");
+    }
+
+    public void txtSearch(KeyEvent keyEvent) {
+    }
+
+    public void btnRemoveOnAction(ActionEvent actionEvent) {
+    }
+
+    public void btnAddOnAction(ActionEvent actionEvent) {
+    }
+
+    public void btnUpdateOnAction(ActionEvent actionEvent) {
+    }
+
+    public void btnClear(ActionEvent actionEvent) {
     }
 }

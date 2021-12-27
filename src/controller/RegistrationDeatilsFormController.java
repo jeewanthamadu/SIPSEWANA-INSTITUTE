@@ -8,6 +8,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -23,6 +26,21 @@ public class RegistrationDeatilsFormController {
     public AnchorPane rdContext;
     public Label lblDate;
     public Label lblTime;
+    public TableView tblProgramme;
+    public TableColumn colProgrammeID;
+    public TableColumn colProgrammeName;
+    public TableColumn colDuration;
+    public TableColumn colFee;
+    public TableView tblRegister;
+    public TableColumn colRegNo;
+    public TableColumn colName;
+    public TableColumn colAge;
+    public TableColumn colNic;
+    public TableColumn colContactNumber;
+    public TableColumn colAddress;
+    public TableColumn colDob;
+    public TableColumn colEmail;
+    public TableColumn colGender;
 
     public void initialize(){
         loadDateAndTime();
@@ -52,5 +70,8 @@ public class RegistrationDeatilsFormController {
         window.setScene(new Scene(load));
         window.centerOnScreen();
         window.setResizable(false);
+    }
+
+    public void txtSearch(KeyEvent keyEvent) {
     }
 }

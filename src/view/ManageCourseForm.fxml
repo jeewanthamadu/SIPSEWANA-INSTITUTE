@@ -98,7 +98,7 @@
             <Font name="Calisto MT Bold" size="24.0" />
          </font>
       </Label>
-      <TableView fx:id="tblProgramme" layoutX="39.0" layoutY="418.0" prefHeight="228.0" prefWidth="1144.0" stylesheets="@../style.css">
+      <TableView fx:id="tblProgramme" layoutX="39.0" layoutY="418.0" onMouseClicked="#tblOnMouseClicked" prefHeight="228.0" prefWidth="1144.0" stylesheets="@../style.css">
          <columns>
             <TableColumn fx:id="colProgrammeID" prefWidth="297.0" text="Programme ID" />
             <TableColumn fx:id="colProgrammeName" prefWidth="293.0" text="Programme Name" />
@@ -106,7 +106,7 @@
             <TableColumn fx:id="colFee" prefWidth="273.0" text="Fee(LKR)" />
          </columns>
       </TableView>
-      <Button layoutX="1014.0" layoutY="277.0" mnemonicParsing="false" onAction="#btnClear" prefHeight="37.0" prefWidth="134.0" style="-fx-background-color: #c0392b; -fx-background-radius: 20;" text="CLEAR" textFill="WHITE">
+      <Button layoutX="1014.0" layoutY="277.0" mnemonicParsing="false" onAction="#btnClear" prefHeight="37.0" prefWidth="134.0" style="-fx-background-color: #d68031; -fx-background-radius: 20;" text="CLEAR" textFill="WHITE">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>

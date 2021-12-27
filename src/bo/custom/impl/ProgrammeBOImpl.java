@@ -6,9 +6,13 @@ import dao.custom.impl.ProgrammeDAOImpl;
 import dto.ProgrammeDTO;
 import dto.StudentDTO;
 import entity.Programme;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import view.tm.ProgrammeTM;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
 
 public class ProgrammeBOImpl implements ProgrammeBO {
     ProgrammeDAOImpl programmeDAO = (ProgrammeDAOImpl) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.PROGRAMME);
@@ -23,14 +27,14 @@ public class ProgrammeBOImpl implements ProgrammeBO {
     }
 
     @Override
-    public List<ProgrammeDTO> find() {
+    public ObservableList<ProgrammeTM> find() {
         List<Programme>list = programmeDAO.find();
-        ArrayList<ProgrammeDTO> dtoArrayList=new ArrayList<>();
+        ObservableList<ProgrammeTM> dtoArrayList= FXCollections.observableArrayList();
 
         ProgrammeDTO programmeDTO=null;
 
         for (Programme programme:list
-             ) {dtoArrayList.add(new ProgrammeDTO(
+             ) {dtoArrayList.add(new ProgrammeTM(
                 programme.getProgrammeID(),
                 programme.getProgrammeName(),
                 programme.getDuration(),

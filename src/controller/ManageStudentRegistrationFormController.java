@@ -2,6 +2,7 @@ package controller;
 
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
+import entity.Programme;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -9,10 +10,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -57,6 +57,9 @@ public class ManageStudentRegistrationFormController {
     public JFXTextField txtFee03;
     public JFXTextField cmbDuration03;
     public JFXTextField txtNic;
+    public RadioButton rdMale;
+    public RadioButton rdFemale;
+    public ToggleGroup gender;
 
 
     public void initialize(){
@@ -96,8 +99,15 @@ public class ManageStudentRegistrationFormController {
     }
 
     public void btnAddOnAction(ActionEvent actionEvent) {
+
     }
 
     public void btnUpdateOnAction(ActionEvent actionEvent) {
+    }
+
+    public void btnClearOnAction(ActionEvent actionEvent) {
+    }
+
+    public void tblOnClicked(MouseEvent mouseEvent) {
     }
 }

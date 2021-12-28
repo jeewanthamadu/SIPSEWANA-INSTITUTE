@@ -77,5 +77,10 @@ public class ProgrammeBOImpl implements ProgrammeBO {
         return programmeDAO.getAllProgramIds();
     }
 
+    @Override
+    public ProgrammeDTO getProgrammeDetails(String id) {
+        return programmeDAO.getProgrammeList(id);
+    }
+
 
 }

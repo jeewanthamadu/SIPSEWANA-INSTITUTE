@@ -1,11 +1,13 @@
 package controller;
 
 import bo.BOFactory;
+import bo.custom.impl.ProgrammeBOImpl;
 import bo.custom.impl.StudentBOImpl;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import dao.DAOFactory;
 import dao.custom.impl.ProgrammeDAOImpl;
+import dto.ProgrammeDTO;
 import dto.StudentDTO;
 import entity.Programme;
 import javafx.animation.Animation;
@@ -51,15 +53,15 @@ public class ManageStudentRegistrationFormController {
     public JFXTextField txtAddress;
     public JFXTextField txtAge;
     public JFXTextField txtEmail;
-    public JFXComboBox cmbProgrammeID01;
+    public JFXComboBox<String> cmbProgrammeID01;
     public JFXTextField txtProgramme01;
     public JFXTextField txtFee01;
     public JFXTextField cmbDuration01;
-    public JFXComboBox cmbProgrammeID02;
+    public JFXComboBox<String> cmbProgrammeID02;
     public JFXTextField txtProgramme02;
     public JFXTextField txtFee02;
     public JFXTextField cmbDuration02;
-    public JFXComboBox cmbProgrammeID03;
+    public JFXComboBox<String> cmbProgrammeID03;
     public JFXTextField txtProgramme03;
     public JFXTextField txtFee03;
     public JFXTextField cmbDuration03;
@@ -67,13 +69,31 @@ public class ManageStudentRegistrationFormController {
     public RadioButton rdMale;
     public RadioButton rdFemale;
     public ToggleGroup gender;
+    public CheckBox cb;
+    public CheckBox cb1;
+    public CheckBox cb2;
 
     StudentBOImpl studentBO = (StudentBOImpl) BOFactory.getBoFactory().getBO(BOFactory.BoTypes.STUDENT);
-    private final ProgrammeDAOImpl programmeDAO = (ProgrammeDAOImpl) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.PROGRAMME);
+    ProgrammeBOImpl programmeBO = (ProgrammeBOImpl) BOFactory.getBoFactory().getBO(BOFactory.BoTypes.PROGRAMME);
 
     public void initialize(){
         loadDateAndTime();
         loadProgramId();
+        setDisableChoose();
+
+        cmbProgrammeID01.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            setProgrammeData(txtProgramme01,cmbDuration01,txtFee01,newValue);
+        });
+
+        cmbProgrammeID02.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            setProgrammeData(txtProgramme02,cmbDuration02,txtFee02,newValue);
+        });
+
+        cmbProgrammeID03.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            setProgrammeData(txtProgramme03,cmbDuration03,txtFee03,newValue);
+        });
+
+
     }
 
     private void loadDateAndTime() {
@@ -154,9 +174,58 @@ public class ManageStudentRegistrationFormController {
     }
 
     private void loadProgramId(){
-        List<String> allProgramIds = programmeDAO.getAllProgramIds();
+        List<String> allProgramIds = programmeBO.getAllProgramIds();
         cmbProgrammeID01.getItems().addAll(allProgramIds);
         cmbProgrammeID02.getItems().addAll(allProgramIds);
         cmbProgrammeID03.getItems().addAll(allProgramIds);
+    }
+
+    public void cbOnClick(MouseEvent mouseEvent) {
+        if(cb1.isSelected()){
+            cmbProgrammeID02.setDisable(false);
+            txtProgramme02.setDisable(false);
+            cmbDuration02.setDisable(false);
+            txtFee02.setDisable(false);
+      }else {
+            cmbProgrammeID02.setDisable(true);
+            txtProgramme02.setDisable(true);
+            cmbDuration02.setDisable(true);
+            txtFee02.setDisable(true);
+        }
+
+        if(cb2.isSelected()){
+            cmbProgrammeID03.setDisable(false);
+            txtProgramme03.setDisable(false);
+            cmbDuration03.setDisable(false);
+            txtFee03.setDisable(false);
+        }else {
+            cmbProgrammeID03.setDisable(true);
+            txtProgramme03.setDisable(true);
+            cmbDuration03.setDisable(true);
+            txtFee03.setDisable(true);
+        }
+    }
+
+    public void setDisableChoose(){
+        cmbProgrammeID02.setDisable(true);
+        txtProgramme02.setDisable(true);
+        cmbDuration02.setDisable(true);
+        txtFee02.setDisable(true);
+
+        cmbProgrammeID03.setDisable(true);
+        txtProgramme03.setDisable(true);
+        cmbDuration03.setDisable(true);
+        txtFee03.setDisable(true);
+    }
+
+    private void setProgrammeData(JFXTextField enterProgramme, JFXTextField enterDuration, JFXTextField enterFee, String ProgrammeID) {
+        ProgrammeDTO programmeDetails = programmeBO.getProgrammeDetails(ProgrammeID);
+
+        if (programmeDetails == null) {
+        } else {
+            enterProgramme.setText(programmeDetails.getProgrammeName());
+            enterDuration.setText(programmeDetails.getDuration());
+            enterFee.setText(programmeDetails.getFee() + "");
+        }
     }
 }

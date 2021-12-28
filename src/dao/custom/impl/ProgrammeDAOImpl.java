@@ -1,7 +1,7 @@
 package dao.custom.impl;
 
-import dao.DAOFactory;
 import dao.custom.ProgrammeDAO;
+import dto.ProgrammeDTO;
 import entity.Programme;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -82,6 +82,33 @@ public class ProgrammeDAOImpl implements ProgrammeDAO {
         transaction.commit();
         session.close();
         return list;
+    }
+
+    @Override
+    public ProgrammeDTO getProgrammeList(String id) {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+
+        Query query = session.createQuery("FROM Programme p WHERE p.programmeID = ?1");
+        query.setParameter(1,id);
+        List<Programme> resultList = query.getResultList();
+
+        transaction.commit();
+        session.close();
+
+        ProgrammeDTO programmeDTO =null;
+        if (!resultList.isEmpty()){
+            for (Programme list:resultList) {
+                programmeDTO=new ProgrammeDTO(
+                        list.getProgrammeName(),
+                        list.getDuration(),
+                        list.getFee()
+                );
+            }
+            return programmeDTO;
+        }else {
+            return null;
+        }
     }
 
 

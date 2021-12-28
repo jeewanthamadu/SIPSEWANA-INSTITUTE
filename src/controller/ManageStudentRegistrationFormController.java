@@ -19,11 +19,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import view.tm.ProgrammeTM;
+import view.tm.StudentTM;
 
 import java.io.IOException;
 import java.net.URL;
@@ -80,6 +83,7 @@ public class ManageStudentRegistrationFormController {
         loadDateAndTime();
         loadProgramId();
         setDisableChoose();
+        showProgrammesOnTable();
 
         cmbProgrammeID01.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             setProgrammeData(txtProgramme01,cmbDuration01,txtFee01,newValue);
@@ -161,8 +165,6 @@ public class ManageStudentRegistrationFormController {
 
     }
 
-    private void showProgrammesOnTable() {
-    }
 
     public void btnUpdateOnAction(ActionEvent actionEvent) {
     }
@@ -228,4 +230,21 @@ public class ManageStudentRegistrationFormController {
             enterFee.setText(programmeDetails.getFee() + "");
         }
     }
+
+    public void showProgrammesOnTable() {
+        ObservableList<StudentTM> list = studentBO.find();
+
+        colRegNo.setCellValueFactory(new PropertyValueFactory<>("regNumber"));
+        colName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        colAge.setCellValueFactory(new PropertyValueFactory<>("age"));
+        colContactNumber.setCellValueFactory(new PropertyValueFactory<>("contactNumber"));
+        colAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
+        colDob.setCellValueFactory(new PropertyValueFactory<>("dob"));
+        colEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
+        colNic.setCellValueFactory(new PropertyValueFactory<>("nic"));
+        colGender.setCellValueFactory(new PropertyValueFactory<>("gender"));
+
+        tblRegister.setItems(list);
+    }
+
 }

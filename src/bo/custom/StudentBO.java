@@ -12,4 +12,5 @@ public interface StudentBO extends SuperBO {
     ObservableList<StudentTM> find();
     boolean update(StudentDTO studentDTO);
     boolean delete(String id);
+    ObservableList<StudentTM> search(String value);
 }

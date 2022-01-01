@@ -58,14 +58,15 @@
             <Font name="Cooper Black" size="39.0" />
          </font>
       </Label>
-      <JFXTextField fx:id="txtRegNo" focusColor="#001f9a" labelFloat="true" layoutX="66.0" layoutY="148.0" prefHeight="25.0" prefWidth="148.0" promptText="Reg.No" />
-      <JFXTextField fx:id="txtName" focusColor="#001f9a" labelFloat="true" layoutX="271.0" layoutY="148.0" prefHeight="25.0" prefWidth="329.0" promptText="Name" />
-      <JFXTextField fx:id="txtDob" focusColor="#001f9a" labelFloat="true" layoutX="421.0" layoutY="198.0" prefHeight="25.0" prefWidth="212.0" promptText="DOB" />
-      <JFXTextField fx:id="txtContactNumber" focusColor="#001f9a" labelFloat="true" layoutX="976.0" layoutY="148.0" prefHeight="25.0" prefWidth="198.0" promptText="Contact Number" />
-      <JFXTextField fx:id="txtAddress" focusColor="#001f9a" labelFloat="true" layoutX="66.0" layoutY="198.0" prefHeight="25.0" prefWidth="290.0" promptText="Address" />
-      <JFXTextField fx:id="txtAge" focusColor="#001f9a" labelFloat="true" layoutX="646.0" layoutY="148.0" prefHeight="25.0" prefWidth="61.0" promptText="Age" />
-      <JFXTextField fx:id="txtEmail" focusColor="#001f9a" labelFloat="true" layoutX="689.0" layoutY="198.0" prefHeight="25.0" prefWidth="212.0" promptText="E-Mail" />
-      <JFXTextField fx:id="txtSearch" labelFloat="true" layoutX="66.0" layoutY="469.0" onKeyReleased="#txtSearch" prefHeight="25.0" prefWidth="290.0" promptText="Search" unFocusColor="BLACK">
+      <JFXTextField fx:id="txtRegNo" focusColor="#001f9a" labelFloat="true" layoutX="66.0" layoutY="148.0" onKeyReleased="#txtRegisterKeyRelease" prefHeight="25.0" prefWidth="148.0" promptText="Reg.No" />
+      <JFXTextField fx:id="txtName" focusColor="#001f9a" labelFloat="true" layoutX="271.0" layoutY="148.0" onKeyReleased="#txtRegisterKeyRelease" prefHeight="25.0" prefWidth="329.0" promptText="Name" />
+      <JFXTextField fx:id="txtDob" focusColor="#001f9a" labelFloat="true" layoutX="421.0" layoutY="198.0" onKeyReleased="#txtRegisterKeyRelease" prefHeight="25.0" prefWidth="212.0" promptText="DOB" />
+      <JFXTextField fx:id="txtContactNumber" focusColor="#001f9a" labelFloat="true" layoutX="976.0" layoutY="148.0" onKeyReleased="#txtRegisterKeyRelease" prefHeight="25.0" prefWidth="198.0" promptText="Contact Number" />
+      <JFXTextField fx:id="txtAddress" focusColor="#001f9a" labelFloat="true" layoutX="66.0" layoutY="198.0" onKeyReleased="#txtRegisterKeyRelease" prefHeight="25.0" prefWidth="290.0" promptText="Address" />
+      <JFXTextField fx:id="txtNic" focusColor="#001f9a" labelFloat="true" layoutX="748.0" layoutY="148.0" onKeyReleased="#txtRegisterKeyRelease" prefHeight="25.0" prefWidth="198.0" promptText="NIC" />
+      <JFXTextField fx:id="txtAge" focusColor="#001f9a" labelFloat="true" layoutX="646.0" layoutY="148.0" onKeyReleased="#txtRegisterKeyRelease" prefHeight="25.0" prefWidth="61.0" promptText="Age" />
+      <JFXTextField fx:id="txtEmail" focusColor="#001f9a" labelFloat="true" layoutX="689.0" layoutY="198.0" onKeyReleased="#txtRegisterKeyRelease" prefHeight="25.0" prefWidth="212.0" promptText="E-Mail" />
+      <JFXTextField fx:id="txtSearch" labelFloat="true" layoutX="66.0" layoutY="469.0" onKeyReleased="#txtRegisterKeyRelease" prefHeight="25.0" prefWidth="290.0" promptText="Search" unFocusColor="BLACK">
          <font>
             <Font size="13.0" />
          </font>
@@ -116,7 +117,6 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Button>
-      <JFXTextField fx:id="txtNic" focusColor="#001f9a" labelFloat="true" layoutX="748.0" layoutY="148.0" prefHeight="25.0" prefWidth="198.0" promptText="NIC" />
       <RadioButton fx:id="rdMale" layoutX="966.0" layoutY="197.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="91.0" selected="true" text="Male">
          <toggleGroup>
             <ToggleGroup fx:id="gender" />

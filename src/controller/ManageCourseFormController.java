@@ -12,16 +12,15 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import util.Validation;
 import view.tm.ProgrammeTM;
 
 import java.io.IOException;
@@ -29,7 +28,9 @@ import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.time.LocalTime;
 import java.util.Date;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class ManageCourseFormController {
     public AnchorPane cmContext;
@@ -46,12 +47,30 @@ public class ManageCourseFormController {
     public TableColumn colFee;
     public JFXTextField txtSearch;
     public JFXTextField txtSearch1;
+    public Button btnAdd;
 
     ProgrammeBOImpl programmeBO = (ProgrammeBOImpl) BOFactory.getBoFactory().getBO(BOFactory.BoTypes.PROGRAMME);
+
+    LinkedHashMap<JFXTextField, Pattern> map = new LinkedHashMap<>();
+    Pattern courserIdPattern = Pattern.compile("^(C)[-]?[0-9]{3}$");
+    Pattern courserNamePattern = Pattern.compile("^[A-z ]{1,30}$");
+    Pattern courserDurationPattern = Pattern.compile("^[A-z 0-9 ]{1,10}$");
+    Pattern courserFeePattern = Pattern.compile("^[0-9 ]{1,30}$");
+
 
     public void initialize(){
         loadDateAndTime();
         showProgrammesOnTable();
+        storeValidations();
+
+    }
+
+    private void storeValidations() {
+        map.put(txtProgrammeID,courserIdPattern);
+        map.put(txtProgramme,courserNamePattern);
+        map.put(txtDuration,courserDurationPattern);
+        map.put(txtFee,courserFeePattern);
+
     }
 
     private void loadDateAndTime() {
@@ -114,6 +133,8 @@ public class ManageCourseFormController {
         }
     }
 
+
+    // meka balanna apahu
     public void btnUpdateOnAction(ActionEvent actionEvent) {
         ProgrammeTM selectedItem = tblProgramme.getSelectionModel().getSelectedItem();
         String programmeID = selectedItem.getProgrammeID();
@@ -160,4 +181,16 @@ public class ManageCourseFormController {
         }
     }
 
+    public void txtCourseKeyRelease(KeyEvent keyEvent) {
+        btnAdd.setDisable(true);
+        Object response = Validation.validate(map,btnAdd,"Green");
+        if (keyEvent.getCode()== KeyCode.ENTER) {
+            if (response instanceof TextField){
+                TextField error  = (TextField) response;
+                error.requestFocus();
+            }else if (response instanceof Boolean){
+                new Alert(Alert.AlertType.CONFIRMATION, "Done").show();
+            }
+        }
+    }
 }

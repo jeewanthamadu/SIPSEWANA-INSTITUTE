@@ -29,7 +29,6 @@ import java.text.SimpleDateFormat;
 import java.time.LocalTime;
 import java.util.Date;
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.regex.Pattern;
 
 public class ManageCourseFormController {
@@ -45,7 +44,6 @@ public class ManageCourseFormController {
     public TableColumn colProgrammeName;
     public TableColumn colDuration;
     public TableColumn colFee;
-    public JFXTextField txtSearch;
     public JFXTextField txtSearch1;
     public Button btnAdd;
 
@@ -55,14 +53,13 @@ public class ManageCourseFormController {
     Pattern courserIdPattern = Pattern.compile("^(C)[-]?[0-9]{3}$");
     Pattern courserNamePattern = Pattern.compile("^[A-z ]{1,30}$");
     Pattern courserDurationPattern = Pattern.compile("^[A-z 0-9 ]{1,10}$");
-    Pattern courserFeePattern = Pattern.compile("^[0-9 ]{1,30}$");
+    Pattern courserFeePattern = Pattern.compile("^(?:0|[1-9]\\d*)(?:\\.(?!.*000)\\d+)?$");
 
 
     public void initialize(){
         loadDateAndTime();
         showProgrammesOnTable();
         storeValidations();
-
     }
 
     private void storeValidations() {
@@ -70,7 +67,6 @@ public class ManageCourseFormController {
         map.put(txtProgramme,courserNamePattern);
         map.put(txtDuration,courserDurationPattern);
         map.put(txtFee,courserFeePattern);
-
     }
 
     private void loadDateAndTime() {
@@ -111,6 +107,7 @@ public class ManageCourseFormController {
 
         if (programmeBO.delete(programmeID)) {
             showProgrammesOnTable();
+            btnClear();
             new Alert(Alert.AlertType.CONFIRMATION, "DELETED successfully").show();
         } else {
             new Alert(Alert.AlertType.WARNING, "Try Again").show();
@@ -127,17 +124,14 @@ public class ManageCourseFormController {
 
         if(programmeBO.add(programme)){
             showProgrammesOnTable();
+            btnClear();
             new Alert(Alert.AlertType.CONFIRMATION,"Course Add Successfully").show();
         }else {
             new Alert(Alert.AlertType.WARNING,"Something Went Wrong").show();
         }
     }
 
-
-    // meka balanna apahu
     public void btnUpdateOnAction(ActionEvent actionEvent) {
-        ProgrammeTM selectedItem = tblProgramme.getSelectionModel().getSelectedItem();
-        String programmeID = selectedItem.getProgrammeID();
 
         ProgrammeDTO program = new ProgrammeDTO(
                 txtProgrammeID.getText(),
@@ -147,6 +141,7 @@ public class ManageCourseFormController {
         );
         if (programmeBO.update(program)) {
             showProgrammesOnTable();
+            btnClear();
             new Alert(Alert.AlertType.CONFIRMATION, "Program Updated Successfully").show();
         } else {
             new Alert(Alert.AlertType.WARNING, "Try Again").show();
@@ -154,6 +149,10 @@ public class ManageCourseFormController {
     }
 
     public void btnClear(ActionEvent actionEvent) {
+        btnClear();
+    }
+
+    public void btnClear() {
         txtProgrammeID.clear();
         txtProgramme.clear();
         txtDuration.clear();

@@ -28,7 +28,7 @@
             <Font name="Cooper Black" size="39.0" />
          </font>
       </Label>
-      <JFXTextField labelFloat="true" layoutX="42.0" layoutY="175.0" onKeyReleased="#txtSearch" prefHeight="37.0" prefWidth="412.0" promptText="Search" unFocusColor="BLACK">
+      <JFXTextField fx:id="txtSearch" labelFloat="true" layoutX="42.0" layoutY="175.0" onKeyReleased="#txtSearch" prefHeight="37.0" prefWidth="412.0" promptText="Search" unFocusColor="BLACK">
          <font>
             <Font size="16.0" />
          </font>
@@ -83,7 +83,7 @@
             <TableColumn fx:id="colFee" prefWidth="273.0" text="Fee(LKR)" />
          </columns>
       </TableView>
-      <TableView fx:id="tblRegister" layoutX="49.0" layoutY="280.0" prefHeight="124.0" prefWidth="1120.0" stylesheets="@../style.css">
+      <TableView fx:id="tblRegister" layoutX="49.0" layoutY="280.0" onMouseClicked="#stTableOnMouseClick" prefHeight="124.0" prefWidth="1120.0" stylesheets="@../style.css">
          <columns>
             <TableColumn fx:id="colRegNo" prefWidth="82.0" text="Reg.No" />
             <TableColumn fx:id="colName" prefWidth="172.0" text="Name" />

@@ -97,10 +97,10 @@ public class ManageStudentRegistrationFormController {
 
 
     LinkedHashMap<JFXTextField, Pattern> map = new LinkedHashMap<>();
-    Pattern studentIdPattern = Pattern.compile("^(C)[-]?[0-9]{3}$");
+    Pattern studentIdPattern = Pattern.compile("^(R)[-]?[0-9]{3}$");
     Pattern studentNamePattern = Pattern.compile("^[A-z ]{1,30}$");
     Pattern studentNicPattern = Pattern.compile("^[0-9]{9}[v]|[0-9]{12}$");
-    Pattern studentAddressPattern = Pattern.compile("^[A-z0-9/]{6,30}$");
+    Pattern studentAddressPattern = Pattern.compile("^[A-z0-9/]{2,30}$");
     Pattern studentTeleNumberPattern = Pattern.compile("^[0-9]{10}$");
     Pattern studentAgePattern = Pattern.compile("^[0-9]{2}$");
     Pattern studentEmailPattern = Pattern.compile("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
@@ -213,6 +213,7 @@ public class ManageStudentRegistrationFormController {
 
         if (studentDAO.register(student,cmb01,cmb02,cmb03)){
             showProgrammesOnTable();
+            btnClear();
             new Alert(Alert.AlertType.CONFIRMATION,"Register Successfully").show();
         }else {
             new Alert(Alert.AlertType.WARNING, "Something Went Wrong").show();
@@ -225,25 +226,38 @@ public class ManageStudentRegistrationFormController {
             btnUpdate.setDisable(true);
             btnAdd.setDisable(false);
             new Alert(Alert.AlertType.CONFIRMATION,"ADD new Programme Successfully").show();
+            btnClear();
         }else{
             new Alert(Alert.AlertType.WARNING, "Something Went Wrong").show();
         }
     }
 
+    public void btnClear() {
+        txtRegNo.clear();
+        txtName.clear();
+        txtAge.clear();
+        txtContactNumber.clear();
+        txtAddress.clear();
+        txtDob.clear();
+        txtEmail.clear();
+        txtNic.clear();
+        txtRegNo.requestFocus();
+    }
+
     public void btnClearOnAction(ActionEvent actionEvent) {
+        btnClear();
     }
 
     public void tblOnClicked(MouseEvent mouseEvent) {
         try {
-
             StudentTM selectedItem = tblRegister.getSelectionModel().getSelectedItem();
             txtRegNo.setText(selectedItem.getRegNumber());
             txtName.setText(selectedItem.getName());
             txtAge.setText(String.valueOf(selectedItem.getAge()));
-            txtContactNumber.setText(selectedItem.getRegNumber());
+            txtContactNumber.setText(selectedItem.getContactNumber());
             txtAddress.setText(selectedItem.getAddress());
             txtDob.setText(selectedItem.getDob());
-            txtEmail.setText(selectedItem.getNic());
+            txtEmail.setText(selectedItem.getEmail());
             txtNic.setText(selectedItem.getNic());
 
             if (selectedItem.getGender().equals("Male")) {
@@ -331,7 +345,6 @@ public class ManageStudentRegistrationFormController {
     }
 
     public void txtRegisterKeyRelease(KeyEvent keyEvent) {
-
         btnAdd.setDisable(true);
         Object response = Validation.validate(map,btnAdd,"Green");
         if (keyEvent.getCode()== KeyCode.ENTER) {
@@ -342,6 +355,5 @@ public class ManageStudentRegistrationFormController {
                 new Alert(Alert.AlertType.CONFIRMATION, "Done").show();
             }
         }
-
     }
 }

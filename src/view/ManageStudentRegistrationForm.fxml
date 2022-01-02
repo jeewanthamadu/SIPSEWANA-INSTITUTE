@@ -66,7 +66,7 @@
       <JFXTextField fx:id="txtNic" focusColor="#001f9a" labelFloat="true" layoutX="748.0" layoutY="148.0" onKeyReleased="#txtRegisterKeyRelease" prefHeight="25.0" prefWidth="198.0" promptText="NIC" />
       <JFXTextField fx:id="txtAge" focusColor="#001f9a" labelFloat="true" layoutX="646.0" layoutY="148.0" onKeyReleased="#txtRegisterKeyRelease" prefHeight="25.0" prefWidth="61.0" promptText="Age" />
       <JFXTextField fx:id="txtEmail" focusColor="#001f9a" labelFloat="true" layoutX="689.0" layoutY="198.0" onKeyReleased="#txtRegisterKeyRelease" prefHeight="25.0" prefWidth="212.0" promptText="E-Mail" />
-      <JFXTextField fx:id="txtSearch" labelFloat="true" layoutX="66.0" layoutY="469.0" onKeyReleased="#txtRegisterKeyRelease" prefHeight="25.0" prefWidth="290.0" promptText="Search" unFocusColor="BLACK">
+      <JFXTextField fx:id="txtSearch" labelFloat="true" layoutX="66.0" layoutY="469.0" onKeyReleased="#txtSearch" prefHeight="25.0" prefWidth="290.0" promptText="Search" unFocusColor="BLACK">
          <font>
             <Font size="13.0" />
          </font>

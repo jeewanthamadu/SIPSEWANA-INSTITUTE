@@ -4,6 +4,7 @@ import bo.custom.ProgrammeBO;
 import dao.DAOFactory;
 import dao.custom.ProgrammeDAO;
 import dao.custom.impl.ProgrammeDAOImpl;
+import dao.custom.impl.QueryDAOImpl;
 import dto.ProgrammeDTO;
 import entity.Programme;
 import javafx.collections.FXCollections;
@@ -13,6 +14,7 @@ import java.util.List;
 
 
 public class ProgrammeBOImpl implements ProgrammeBO {
+    private final QueryDAOImpl queryDAO = (QueryDAOImpl) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.Query);
     ProgrammeDAOImpl programmeDAO = (ProgrammeDAOImpl) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.PROGRAMME);
     @Override
     public boolean add(ProgrammeDTO programmeDTO) {
@@ -28,8 +30,6 @@ public class ProgrammeBOImpl implements ProgrammeBO {
     public ObservableList<ProgrammeTM> find() {
         List<Programme>list = programmeDAO.find();
         ObservableList<ProgrammeTM> dtoArrayList= FXCollections.observableArrayList();
-
-        ProgrammeDTO programmeDTO=null;
 
         for (Programme programme:list
              ) {dtoArrayList.add(new ProgrammeTM(
@@ -80,6 +80,21 @@ public class ProgrammeBOImpl implements ProgrammeBO {
     @Override
     public ProgrammeDTO getProgrammeDetails(String id) {
         return programmeDAO.getProgrammeList(id);
+    }
+
+    @Override
+    public ObservableList<ProgrammeTM> getStudentPrograms(String value) {
+        List<Programme> list = queryDAO.getProgrammeList(value);
+        ObservableList <ProgrammeTM> list1 = FXCollections.observableArrayList();
+        for (Programme programme:list) {
+            list1.add(new ProgrammeTM(
+                    programme.getProgrammeID(),
+                    programme.getProgrammeName(),
+                    programme.getDuration(),
+                    programme.getFee()
+            ));
+        }
+        return list1;
     }
 
 
